@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table">
+    <caption style="caption-side: top">* 단체 종목 메달은 1개로 집계됩니다. 
+    <thead>
+          <th>종목</th>
+        <th>세부 종목</th>
+        <th>선수</th>
+        <th>메달</th>
+    </thead>
+    <tbody>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.game.sport }}</td>
+                <td>{{ result.game.game_name }}</td>
+                <td>{{ result.athlete.athlete_name }}</td>
+                {% if result.medal_type == "금" %}
+                    <td>🥇</td>
+                {% elif result.medal_type == "은" %}
+                    <td>🥈</td>
+                {% else %}
+                    <td>🥉</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+
+{% endblock %}

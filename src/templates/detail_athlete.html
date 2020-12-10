@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+        <table class="table">
+            <thead>
+                <th>ID</th>
+            <th>이름</th>
+            <th>성별</th>
+            <th>국가</th>
+            <th>종목</th>
+            </thead>
+            <tbody>
+                <td>{{ athlete.athlete_id }}</td>
+                            <td>{{ athlete.athlete_name}}</td>
+                            <td>{{ athlete.gender }}</td>
+                            <td>{{ athlete.country }}</td>
+                            <td>{{ athlete.sport }}</td>
+            </tbody>
+        </table>
+
+        <table class="table-bordered" width="680px">
+            <thead>
+            <tr>
+                <th>🏆 수상 기록 🏆</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for record in participate %}
+                <tr>
+                    {% if record.medal_type == "금" %}
+                        <td>{{ record.game }} 🥇</td>
+
+                    {% elif record.medal_type == "은" %}
+                        <td>{{ record.game }} 🥈</td>
+                    {% else %}
+                        <td>{{ record.game }} 🥉</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+{% endblock %}

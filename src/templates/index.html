@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+    {#    <div class="search_card" style="width: 680px; background-color: #AECDFF;">#}
+    {#        <form style="width: 680px; margin: 0 auto;">#}
+    <form action="{% url 'search' %}" method='GET'>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1" style="font-weight: bold;" title="season">시즌</label>
+            <select name="season" class="form-control" id="exampleFormControlSelect1"
+                    style="width: 400px; margin-right: auto; margin-left: auto;">
+                <option>하계</option>
+                <option>동계</option>
+            </select>
+        </div>
+
+{#        <div class="form-group">#}
+{#            <label for="exampleFormControlSelect1" style="font-weight: bold;">올림픽</label>#}
+{#            <select name="olympic" class="form-control" id="exampleFormControlSelect1"#}
+{#                    style="width: 400px; margin-right: auto; margin-left: auto;">#}
+{#                {% for olympic in olympics %}#}
+{#                    {% if olympic.season == '동계' %}#}
+{#                    <option>{{ olympic }}</option>계#}
+{#                    {% endif %}#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </div>#}
+{##}
+{#        <div class="form-group">#}
+{#            <label for="exampleFormControlSelect1" style="font-weight: bold;">종목</label>#}
+{#            <select name="sport" class="form-control" id="exampleFormControlSelect1"#}
+{#                    style="width: 400px; margin-right: auto; margin-left: auto;">#}
+{#                {% for sport in sports %}#}
+{#                    <option>{{ sport }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </div>#}
+
+{#        <div class="form-group">#}
+{#            <label for="exampleFormControlSelect1" style="font-weight: bold;">세부종목</label>#}
+{#            <select name="game" class="form-control" id="exampleFormControlSelect1"#}
+{#                    style="width: 400px; margin-right: auto; margin-left: auto;">#}
+{#                {% for game in games %}#}
+{#                    <option>{{ game.game_name }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </div>#}
+
+
+        <button type="submit" class="btn" style="border: solid 1px black;">다음</button>
+    </form>
+
+{% endblock %}

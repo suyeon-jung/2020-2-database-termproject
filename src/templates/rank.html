@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table">
+        <caption style="caption-side: top; text-align: center;">📊 종목별 메달 개수</caption>
+        <thead>
+        <th>종목</th>
+        <th>메달 합계</th>
+        </thead>
+        <tbody>
+        {% for result in sport_results %}
+            <tr>
+                <td>{{ result.sport }}</td>
+                <td>{{ result.count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table">
+        <caption style="caption-side: top; text-align: center;">📊 선수별 메달 개수</caption>
+        <thead>
+        <th>이름</th>
+        <th>성별</th>
+        <th>종목</th>
+        <th>메달 합계</th>
+        </thead>
+        <tbody>
+        {% for result in athlete_results %}
+            <tr>
+                <td>{{ result.athlete.athlete_name }}</td>
+                <td>{{ result.athlete.gender }}</td>
+                <td>{{ result.athlete.sport }}</td>
+                <td>{{ result.count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <span class="step-links" style="display: inline-block; text-align: center;">
+
+    <ul class="pagination">
+
+    {% if athlete_results.has_previous %}
+
+        <li class="page-item"><a class="page-link" href="?page={{ athlete_results.previous_page_number }}"> prev </a></li>
+
+    {% endif %}
+
+        <li class="page-item"><a class="page-link"href="#"> Page {{ athlete_results.number }} of {{ athlete_results.paginator.num_pages }}. </a></li>
+
+        {% if athlete_results.has_next %}
+
+            <li class="page-item"><a class="page-link"href="?page={{ athlete_results.next_page_number }}"> next </a></li>
+        {% endif %}
+
+  </ul>
+  </span>
+{% endblock %}

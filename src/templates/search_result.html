@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <form action="{% url 'result' %}" method='GET'>
+
+
+        <div class="form-group">
+            <input name="olympicCheck" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label for="exampleFormControlSelect1" style="font-weight: bold;">올림픽</label>
+            <select name="olympic" class="form-control" id="exampleFormControlSelect1"
+                    style="width: 400px; margin-right: auto; margin-left: auto;">
+                {% for olympic in olympics %}
+                    <option value="{{ olympic.olympic_id }}">{{ olympic }}</option>계
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <input name="sportCheck" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option2">
+            <label for="exampleFormControlSelect1" style="font-weight: bold;">종목</label>
+            <select name="sport" class="form-control" id="exampleFormControlSelect1"
+                    style="width: 400px; margin-right: auto; margin-left: auto;">
+                {% for sport in sports %}
+                    <option value="{{ sport.sport_id }}">{{ sport }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn" style="border: solid 1px black;">다음</button>
+
+    </form>
+
+
+{% endblock %}

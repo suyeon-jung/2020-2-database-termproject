@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table class="table table-hover">
+    <caption style="caption-side: top; text-align: center;">📊 각 올림픽별 메달 집계</caption>
+        <thead>
+        <th>올림픽</th>
+        <th>메달 집계</th>
+        </thead>
+        <tbody>
+        {% for item in result %}
+            <tr onclick="location.href='/record/{{ item.olympic.olympic_id }}'">
+                <td>{{ item.olympic }}</td>
+                <td>{{ item.count }}개</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table table-hover">
+    <caption style="caption-side: top; text-align: center;">🗓 시간 순으로 정렬한 대한민국 메달 기록</caption>
+        <thead>
+        <th>올림픽</th>
+        <th>종목</th>
+        <th>세부 종목</th>
+        <th>선수</th>
+        <th>메달</th>
+        </thead>
+        <tbody>
+        {% for participate in date_participates %}
+            <tr>
+                <td>{{ participate.game.olympic }}</td>
+                <td>{{ participate.game.sport }}</td>
+                <td>{{ participate.game.game_name }}</td>
+                <td>{{ participate.athlete.athlete_name }}</td>
+                {% if participate.medal_type == "금" %}
+                    <td>🥇</td>
+                {% elif participate.medal_type == "은" %}
+                    <td>🥈</td>
+                {% else %}
+                    <td>🥉</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    <span class="step-links" style="display: inline-block; text-align: center;">
+
+    <ul class="pagination">
+
+    {% if date_participates.has_previous %}
+
+        <li class="page-item"><a class="page-link" href="?page={{ date_participates.previous_page_number }}"> prev </a></li>
+
+    {% endif %}
+
+        <li class="page-item"><a class="page-link" href="#"> Page {{ date_participates.number }} of {{ date_participates.paginator.num_pages }}. </a></li>
+
+        {% if date_participates.has_next %}
+
+            <li class="page-item"><a class="page-link"href="?page={{ date_participates.next_page_number }}"> next </a></li>
+        {% endif %}
+
+  </ul>
+  </span>
+{% endblock %}
