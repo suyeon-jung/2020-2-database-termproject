@@ -51,3 +51,6 @@ http://localhost:8000 에서 확인!
 
 ## 📄 LICENSE
 [MIT License]()
+
+
+### **[KHUHUB-original repository](http://khuhub.khu.ac.kr/2020-02-database/2017104025)** 
